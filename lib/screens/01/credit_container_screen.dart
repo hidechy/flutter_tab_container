@@ -39,6 +39,11 @@ class CreditContainerScreen extends StatelessWidget {
             Colors.black.withOpacity(0.2),
             Colors.black.withOpacity(0.2),
             Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
           ],
           selectedTextStyle: const TextStyle(fontSize: 12.0),
           unselectedTextStyle: const TextStyle(fontSize: 12.0),
@@ -51,7 +56,7 @@ class CreditContainerScreen extends StatelessWidget {
 
   ///
   List<Widget> _getChildren1() {
-    List<String> bankList = ['bankA', 'bankB', 'bankC', 'bankD', 'bankE'];
+    List<String> bankList = ['bankA', 'bankB', 'bankC', 'bankD', 'bankE', 'payA', 'payB', 'payC', 'payD', 'payE'];
     return bankList.map((e) {
       return DummyScreen(bank: e);
     }).toList();
@@ -59,7 +64,7 @@ class CreditContainerScreen extends StatelessWidget {
 
   ///
   List<String> _getTabs1() {
-    List<String> bankList = ['bankA', 'bankB', 'bankC', 'bankD', 'bankE'];
+    List<String> bankList = ['bankA', 'bankB', 'bankC', 'bankD', 'bankE', 'payA', 'payB', 'payC', 'payD', 'payE'];
     return bankList.map((e) {
       return e;
     }).toList();
