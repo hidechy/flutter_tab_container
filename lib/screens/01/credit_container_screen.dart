@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tab_container/tab_container.dart';
+import 'package:test_tab_container/screens/01/dummy_screen.dart';
 
 import 'credit_card_data.dart';
 import 'credit_card.dart';
@@ -14,14 +15,13 @@ class CreditContainerScreen extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.9,
       child: AspectRatio(
-        aspectRatio: 10 / 8,
+        aspectRatio: 10 / 15,
         child: TabContainer(
           radius: 20,
-          tabEdge: TabEdge.bottom,
+          tabEdge: TabEdge.top,
           tabCurve: Curves.easeIn,
           transitionBuilder: (child, animation) {
-            animation =
-                CurvedAnimation(curve: Curves.easeIn, parent: animation);
+            animation = CurvedAnimation(curve: Curves.easeIn, parent: animation);
             return SlideTransition(
               position: Tween(
                 begin: const Offset(0.2, 0.0),
@@ -33,13 +33,15 @@ class CreditContainerScreen extends StatelessWidget {
               ),
             );
           },
-          colors: const <Color>[
-            Color(0xfffa86be),
-            Color(0xffa275e3),
-            Color(0xff9aebed),
+          colors: <Color>[
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
+            Colors.black.withOpacity(0.2),
           ],
-          selectedTextStyle: const TextStyle(fontSize: 20.0),
-          unselectedTextStyle: const TextStyle(fontSize: 13.0),
+          selectedTextStyle: const TextStyle(fontSize: 12.0),
+          unselectedTextStyle: const TextStyle(fontSize: 12.0),
           tabs: _getTabs1(),
           children: _getChildren1(),
         ),
@@ -49,30 +51,17 @@ class CreditContainerScreen extends StatelessWidget {
 
   ///
   List<Widget> _getChildren1() {
-    List<CreditCard> cards = kCreditCards
-        .map(
-          (e) => CreditCard.fromJson(e),
-        )
-        .toList();
-
-    return cards.map((e) => CreditCardScreen(data: e)).toList();
+    List<String> bankList = ['bankA', 'bankB', 'bankC', 'bankD', 'bankE'];
+    return bankList.map((e) {
+      return DummyScreen(bank: e);
+    }).toList();
   }
 
   ///
   List<String> _getTabs1() {
-    List<CreditCard> cards = kCreditCards
-        .map(
-          (e) => CreditCard.fromJson(e),
-        )
-        .toList();
-
-    return cards
-        .map(
-          (e) => '*${e.number.substring(
-            e.number.length - 4,
-            e.number.length,
-          )}',
-        )
-        .toList();
+    List<String> bankList = ['bankA', 'bankB', 'bankC', 'bankD', 'bankE'];
+    return bankList.map((e) {
+      return e;
+    }).toList();
   }
 }
